@@ -1,0 +1,27 @@
+<div class="content">
+    <h1 class="center-header">Products App</h1>
+
+    <div>
+        <label class="d-block">Product title</label>
+    </div>
+    <div>
+        <input #product [(ngModel)]="productName" type="text" class="product_input"><button type="button" class="add_btn" (click)="add(product.value)">Add product</button >
+    </div>
+
+    <div style="padding-top: 3%;" [hidden]="products.length == 0">
+        <div style="padding-bottom: 1%;">
+            <span>Number of products: <span style="color: red;">{{products.length}}</span></span>
+            <a href="#" (click)="remove()" style="float: right;">Remove all products</a>
+        </div>
+        <p *ngFor="let product of products;" class="item"><span class="txt"></span>{{product}}</p>
+    </div>
+
+    <div class="modal" [hidden]="!showModal">
+        <div style="padding-left: 3%; padding-top: 3%; color: whitesmoke;">
+            Are you sure you want to remove all products?
+        </div>
+
+        <button (click)="delete()" class="ok">OK</button>
+        <button (click)="close()" class="cancel" style="float: right;">Cancel</button>
+    </div>
+</div>
